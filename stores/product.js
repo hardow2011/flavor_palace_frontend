@@ -28,7 +28,6 @@ export const useProductStore = defineStore('product', {
             ProductService.getProducts()
                 .then((data) => {
                     this.products = data
-                    console.log(data)
                 })
                 .catch((error) => {
                     console.log('error caught:', error)
