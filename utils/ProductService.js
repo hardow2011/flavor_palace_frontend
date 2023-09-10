@@ -1,6 +1,17 @@
 export default {
     async getProducts() {
-        const { data, error } = useFetch('http://localhost:3001/products')
-        return { data, error }
+        const products = await $fetch('http://localhost:3000/products').catch((error) => error.data)
+        return products
+    },
+    async createProduct(product) {
+        return await $fetch('http://localhost:3000/products', {
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            method: 'POST',
+            body: {
+                'product': product
+            }
+        })
     }
 }
