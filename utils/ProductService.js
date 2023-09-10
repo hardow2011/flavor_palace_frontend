@@ -14,6 +14,17 @@ export default {
             }
         })
     },
+    async updateProduct(product) {
+        return await $fetch(`http://localhost:3000/products/${product.id}`, {
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            method: 'PUT',
+            body: {
+                'product': product
+            }
+        })
+    },
     getProductByPermalink(permalink) {
         const product = $fetch(`http://localhost:3000/products/${permalink}`).catch((error) => error.data)
         return product
