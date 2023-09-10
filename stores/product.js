@@ -3,15 +3,27 @@ import ProductService from "~/utils/ProductService";
 
 export const useProductStore = defineStore('product', {
     state: () => ({
-        product: {},
+        product: { product_options_attributes: [ {} ] },
         products: []
     }),
     getters: {
-        getProducts(state) {
-            return state.products
-        }
+        getProduct(state) {
+          return state.product
+        },
+        resetProduct(state) {
+            state.product = { product_options_attributes: [ {} ] }
+            return state.product
+        },
     },
     actions: {
+        setProductByPermalink(permalink) {
+            ProductService.getProductByPermalink(permalink)
+                .then((data) => {
+                this.product = data
+            }).catch((error) => {
+                console.log(error)
+            })
+        },
         setProducts() {
             ProductService.getProducts()
                 .then((data) => {
