@@ -8,7 +8,7 @@
   export default {
     setup() {
       const productStore = useProductStore()
-      const product = productStore.product
+      const product = productStore.resetProduct
       return { productStore, product }
     },
     methods: {
