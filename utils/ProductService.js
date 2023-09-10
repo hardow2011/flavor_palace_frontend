@@ -13,5 +13,9 @@ export default {
                 'product': product
             }
         })
+    },
+    getProductByPermalink(permalink) {
+        const product = $fetch(`http://localhost:3000/products/${permalink}`).catch((error) => error.data)
+        return product
     }
 }
