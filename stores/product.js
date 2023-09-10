@@ -3,15 +3,15 @@ import ProductService from "~/utils/ProductService";
 
 export const useProductStore = defineStore('product', {
     state: () => ({
-        product: { product_options_attributes: [ {} ] },
+        product: {product_options_attributes: [{}]},
         products: []
     }),
     getters: {
         getProduct(state) {
-          return state.product
+            return state.product
         },
         resetProduct(state) {
-            state.product = { product_options_attributes: [ {} ] }
+            state.product = {product_options_attributes: [{}]}
             return state.product
         },
     },
@@ -19,8 +19,8 @@ export const useProductStore = defineStore('product', {
         setProductByPermalink(permalink) {
             ProductService.getProductByPermalink(permalink)
                 .then((data) => {
-                this.product = data
-            }).catch((error) => {
+                    this.product = data
+                }).catch((error) => {
                 console.log(error)
             })
         },
@@ -35,12 +35,19 @@ export const useProductStore = defineStore('product', {
         },
         createProduct() {
             ProductService.createProduct(this.product)
-                .then(async (res) => {
-                    console.log(res)
-                    await navigateTo('/')
+                .then(async () => {
+                    navigateTo('/')
                 })
                 .catch((err) => {
                     console.log(err)
+                })
+        }, updateProduct() {
+            ProductService.updateProduct(this.product)
+                .then(() => {
+                    navigateTo('/')
+                })
+                .catch((error) => {
+                    console.log(error)
                 })
         }
     }
