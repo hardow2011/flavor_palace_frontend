@@ -4,13 +4,13 @@
     <input id="product_name" v-model="product.name">
     <br>
     <label for="product_description">Description</label>
-    <input id="product_description" v-model="product.description">
+    <input id="product_description" v-model="product.product_options_attributes[0].description">
     <br>
     <label for="product_price">Price</label>
-    <input id="product_price" type="number" step="0.1" v-model="product.price">
+    <input id="product_price" type="number" step="0.1" v-model="product.product_options_attributes[0].price">
     <br>
     <label for="product_quantity">Quantity</label>
-    <input id="product_quantity" type="number" step="1" v-model="product.quantity">
+    <input id="product_quantity" type="number" step="1" v-model="product.product_options_attributes[0].quantity">
     <br>
     <label for="product_hidden">Hidden</label>
     <input
