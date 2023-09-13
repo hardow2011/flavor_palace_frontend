@@ -14,6 +14,12 @@ export default {
             }
         })
     },
+    async assignMediaToProductOption(media, productOptionId) {
+        return await $fetch(`http://localhost:3000/images/${productOptionId}`, {
+            method: 'POST',
+            body: media
+        })
+    },
     async updateProduct(product) {
         return await $fetch(`http://localhost:3000/products/${product.id}`, {
             headers: {
