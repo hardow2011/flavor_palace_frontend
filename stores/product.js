@@ -3,7 +3,7 @@ import ProductService from "~/utils/ProductService";
 
 export const useProductStore = defineStore('product', {
     state: () => ({
-        product: {product_options_attributes: [{}]},
+        product: { product_options_attributes: [{ image: { media: null, order: null } }] },
         products: []
     }),
     getters: {
@@ -11,7 +11,7 @@ export const useProductStore = defineStore('product', {
             return state.product
         },
         resetProduct(state) {
-            state.product = {product_options_attributes: [{}]}
+            state.product = { product_options_attributes: [{ image: { media: null, order: null } }] }
             return state.product
         },
     },
@@ -35,7 +35,11 @@ export const useProductStore = defineStore('product', {
         },
         createProduct() {
             ProductService.createProduct(this.product)
-                .then(async () => {
+                .then(async (createdProduct) => {
+                    for (let i = 0; i < createdProduct.product_options_attributes.length; i++) {
+                        let productOptionId = createdProduct.product_options_attributes[i].id
+                        this.assignImagesToProductOption(this.product.product_options_attributes[i].image, productOptionId)
+                    }
                     navigateTo('/')
                 })
                 .catch((err) => {
@@ -49,6 +53,10 @@ export const useProductStore = defineStore('product', {
                 .catch((error) => {
                     console.log(error)
                 })
+        },
+        assignImagesToProductOption(image, productOptionId) {
+            ProductService.assignMediaToProductOption(image, productOptionId).then(r => {
+            })
         }
     }
 })
