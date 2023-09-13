@@ -1,6 +1,8 @@
 <template>
   <ul>
-    <li v-for="product in productStore.products"><NuxtLink :to="'products/'+`${product.permalink}`+'/update'">{{ product.name }}</NuxtLink></li>
+    <li v-for="product in productStore.products">
+      <ProductItem :product="product"></ProductItem>
+    </li>
   </ul>
 </template>
 
