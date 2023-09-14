@@ -8,7 +8,10 @@
 
   // const productImageSrc = computed(() => product.product_options_attributes[0].images[0].media_url)
   const productImageSrc = computed(function() {
-    return product.product_options_attributes[0].images[0].media_url
+    if (product.product_options_attributes[0].images[0] && product.product_options_attributes[0].images[0].media_url) {
+      return product.product_options_attributes[0].images[0].media_url
+    }
+    return null
   })
 
 </script>
