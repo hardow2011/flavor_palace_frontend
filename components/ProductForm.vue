@@ -4,35 +4,35 @@
     <input id="product_name" v-model="product.name">
     <hr>
     <div v-for="(product_option, index) in product.product_options_attributes">
-      <label for="product_option_name">Option Name</label>
-      <input id="product_option_name" v-model="product_option.name">
+      <label :for="`product_option_name-${index}`">Option Name</label>
+      <input :id="`product_option_name-${index}`" v-model="product_option.name">
       <br>
-      <label for="product_description">Description</label>
-      <input id="product_description" v-model="product_option.description">
+      <label :for="`product_description-${index}`">Description</label>
+      <input :id="`product_description-${index}`" v-model="product_option.description">
       <br>
-      <label for="default_description">Default Description</label>
-      <input id="default_description" type="checkbox" v-model="product_option.default_description">
+      <label :for="`default_description-${index}`">Default Description</label>
+      <input :id="`default_description-${index}`" type="checkbox" v-model="product_option.default_description">
       <br>
-      <label for="product_price">Price</label>
-      <input id="product_price" type="number" step="0.1" v-model="product_option.price">
+      <label :for="`product_price-${index}`">Price</label>
+      <input :id="`product_price-${index}`" type="number" step="0.1" v-model="product_option.price">
       <br>
-      <label for="product_quantity">Quantity</label>
-      <input id="product_quantity" type="number" step="1" v-model="product_option.quantity">
+      <label :for="`product_quantity-${index}`">Quantity</label>
+      <input :id="`product_quantity-${index}`" type="number" step="1" v-model="product_option.quantity">
       <br>
-      <label for="product_media">Media</label>
-      <input id="product_media" type="file" ref="file" @change="uploadFile($event, index)" alt="">
+      <label :for="`product_media-${index}`">Media</label>
+      <input :id="`product_media-${index}`" type="file" ref="file" @change="uploadFile($event, index)" alt="">
       <br>
-      <label for="product_hidden">Hidden</label>
+      <label :for="`product_hidden-${index}`">Hidden</label>
       <input
-          id="product_hidden"
+          :id="`product_hidden-${index}`"
           type="checkbox"
           v-model="product_option.hidden"
           true-value="true"
           false-value="false"/>
       <br>
-      <label for="product_destroy" v-if="product_option.id">Destroy</label>
+      <label :for="`product_destroy-${index}`" v-if="product_option.id">Destroy</label>
       <input
-          id="product_destroy"
+          :id="`product_destroy-${index}`"
           type="checkbox"
           v-if="product_option.id"
           v-model="product_option._destroy"
