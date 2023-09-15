@@ -10,7 +10,7 @@
   const productImageSrc = computed(function() {
 
     try {
-      return product.product_options_attributes[0].images[0].media_url
+      return product.product_options_attributes[0].images[0].small_media_url
     }catch (err) {
       return null
     }
