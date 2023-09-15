@@ -1,5 +1,5 @@
 <template>
-  <ProductForm :product="product" @publish-product="createProduct" />
+  <ProductForm :product="product" @publish-product="createProduct" @add-product-option="addProductOption" @remove-product-option="removeProductOption" />
 </template>
 
 <script>
@@ -14,7 +14,10 @@
     methods: {
       createProduct() {
         this.productStore.createProduct()
-      }
+      },
+      addProductOption() {
+        this.productStore.addProductOption()
+      },
     }
   }
 </script>
