@@ -1,4 +1,5 @@
 <template>
+  <AdminBar/>
   <slot />
 </template>
 
