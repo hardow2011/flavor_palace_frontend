@@ -3,7 +3,8 @@ import ProductService from "~/utils/ProductService";
 
 export const useProductStore = defineStore('product', {
     state: () => ({
-        product: { product_options_attributes: [{ image: { media: null, order: null } }] },
+        product_options_attributes: { image: { media: null, order: null } },
+        product: { product_options_attributes: [Object.assign({}, this.product_options_attributes)] },
         products: []
     }),
     getters: {
@@ -11,7 +12,7 @@ export const useProductStore = defineStore('product', {
             return state.product
         },
         resetProduct(state) {
-            state.product = { product_options_attributes: [{ image: { media: null, order: null } }] }
+            state.product = { product_options_attributes: [Object.assign({}, this.product_options_attributes)] }
             return state.product
         },
     },
@@ -57,6 +58,10 @@ export const useProductStore = defineStore('product', {
         assignImagesToProductOption(image, productOptionId) {
             ProductService.assignMediaToProductOption(image, productOptionId).then(r => {
             })
+        },
+        addProductOption() {
+            console.log(' this.product.product_options_attributes',  this.product.product_options_attributes)
+            this.product.product_options_attributes.push(Object.assign({}, this.product_options_attributes))
         }
     }
 })
