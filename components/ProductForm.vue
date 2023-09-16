@@ -1,5 +1,6 @@
 <template>
   <form>
+    <button @click.prevent="$emit('deleteProduct', product)" v-if="product.id">Delete product</button>
     <label for="product_name">Name</label>
     <input id="product_name" v-model="product.name">
     <hr>
@@ -62,7 +63,6 @@
 
   function removeProductOption(product_option) {
     product.product_options_attributes = product.product_options_attributes.filter(item => item !== product_option)
-
   }
 
 </script>

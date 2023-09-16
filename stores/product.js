@@ -62,6 +62,13 @@ export const useProductStore = defineStore('product', {
         addProductOption() {
             console.log(' this.product.product_options_attributes',  this.product.product_options_attributes)
             this.product.product_options_attributes.push(Object.assign({}, this.product_options_attributes))
+        },
+        deleteProduct(product) {
+            ProductService.deleteProduct(product).then(() => {
+                navigateTo('/')
+            }).catch((error) => {
+                console.log(error)
+            })
         }
     }
 })

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ProductForm :product="productStore.getProduct" @publish-product="updateProduct" @add-product-option="addProductOption" />
+    <ProductForm :product="productStore.getProduct" @publish-product="updateProduct" @add-product-option="addProductOption" @delete-product="deleteProduct"/>
   </div>
 </template>
 
@@ -21,6 +21,9 @@
       },
       addProductOption() {
         this.productStore.addProductOption()
+      },
+      deleteProduct(product) {
+        this.productStore.deleteProduct(product)
       }
     }
   }

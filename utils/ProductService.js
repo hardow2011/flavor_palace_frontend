@@ -34,5 +34,13 @@ export default {
     getProductByPermalink(permalink) {
         const product = $fetch(`${useRuntimeConfig().public.apiURL}/products/${permalink}`).catch((error) => error.data)
         return product
+    },
+    async deleteProduct(product) {
+        return await $fetch(`${useRuntimeConfig().public.apiURL}/products/${product.id}`, {
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            method: 'DELETE',
+        })
     }
 }
