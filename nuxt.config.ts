@@ -4,6 +4,11 @@ export default defineNuxtConfig({
   modules: [
     '@pinia/nuxt'
   ],
+  runtimeConfig: {
+    public: {
+      apiURL: 'http://localhost:3000/api/v1',
+    }
+  },
   devServer: {
     port: 8000
   }
