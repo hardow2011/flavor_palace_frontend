@@ -4,4 +4,7 @@ export default defineNuxtConfig({
   modules: [
     '@pinia/nuxt'
   ],
+  devServer: {
+    port: 8000
+  }
 })
