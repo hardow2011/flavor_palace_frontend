@@ -1,5 +1,5 @@
 <template>
-  <ProductForm :product="product" @publish-product="createProduct" @add-product-option="addProductOption" @remove-product-option="removeProductOption" />
+  <ProductForm :product="product" @publish-product="createProduct" @add-product-option="addProductOption" />
 </template>
 
 <script>
