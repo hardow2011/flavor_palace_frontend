@@ -1,10 +1,10 @@
 export default {
     async getProducts() {
-        const products = await $fetch('http://localhost:3000/products').catch((error) => error.data)
+        const products = await $fetch(`${useRuntimeConfig().public.apiURL}/products`).catch((error) => error.data)
         return products
     },
     async createProduct(product) {
-        return await $fetch('http://localhost:3000/products', {
+        return await $fetch(`${useRuntimeConfig().public.apiURL}/products`, {
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -15,13 +15,13 @@ export default {
         })
     },
     async assignMediaToProductOption(media, productOptionId) {
-        return await $fetch(`http://localhost:3000/images/${productOptionId}`, {
+        return await $fetch(`${useRuntimeConfig().public.apiURL}/images/${productOptionId}`, {
             method: 'POST',
             body: media
         })
     },
     async updateProduct(product) {
-        return await $fetch(`http://localhost:3000/products/${product.id}`, {
+        return await $fetch(`${useRuntimeConfig().public.apiURL}/products/${product.id}`, {
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -32,7 +32,7 @@ export default {
         })
     },
     getProductByPermalink(permalink) {
-        const product = $fetch(`http://localhost:3000/products/${permalink}`).catch((error) => error.data)
+        const product = $fetch(`${useRuntimeConfig().public.apiURL}/products/${permalink}`).catch((error) => error.data)
         return product
     }
 }
