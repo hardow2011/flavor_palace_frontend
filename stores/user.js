@@ -1,5 +1,6 @@
 import {defineStore} from "pinia";
 import UserService from "~/utils/UserService";
+import {navigateTo} from "#app";
 
 export const useUserStore = defineStore('user', {
     state: () => ({
@@ -19,6 +20,7 @@ export const useUserStore = defineStore('user', {
             UserService.createUserSession(login_token).then((res) => {
                 // auth_token res.data.value.auth_token
                 // TODO: save locally somehow
+                navigateTo("/")
             }).catch((error) => {
                 console.log(error)
             })
