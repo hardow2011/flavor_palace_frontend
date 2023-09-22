@@ -6,16 +6,9 @@
   </ul>
 </template>
 
-<script>
+<script setup>
+  import {useProductStore} from "~/stores/product";
 
-  import { useProductStore } from "~/stores/product";
-
-  export default {
-    setup() {
-      const productStore = useProductStore()
-      productStore.setProducts()
-      return { productStore }
-    }
-  }
-
+  const productStore = useProductStore()
+  productStore.setProducts()
 </script>
