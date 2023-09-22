@@ -18,7 +18,7 @@ export const useUserStore = defineStore('user', {
         createUserSession(login_token) {
             UserService.createUserSession(login_token).then((res) => {
                 // auth_token res.data.value.auth_token
-                // TO-DO: save locally somehow
+                // TODO: save locally somehow
             }).catch((error) => {
                 console.log(error)
             })
