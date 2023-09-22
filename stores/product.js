@@ -4,7 +4,7 @@ import ProductService from "~/utils/ProductService";
 export const useProductStore = defineStore('product', {
     state: () => ({
         product_options_attributes: { image: { media: null, order: null } },
-        product: { product_options_attributes: [Object.assign({}, this.product_options_attributes)] },
+        product: { product_options_attributes: { image: { media: null, order: null } } },
         products: []
     }),
     getters: {
